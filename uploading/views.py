@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .forms import ImageForm,ReviewForm
 from .models import Post,ReviewRating
 
+
 def createpost(request):
     """Process images uploaded by users"""
     if request.method == 'POST':

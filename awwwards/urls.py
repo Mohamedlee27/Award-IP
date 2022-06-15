@@ -18,13 +18,19 @@ from django.urls import path,include
 from .import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as view
+from accounts.views import logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name='home'),
-    path('accounts/', include('accounts.urls')),
+    path('account/', include('accounts.urls')),
     path('uploading/', include('uploading.urls')),
     path('api/',include('rest_api.urls')),
+    path('accounts/', include('django_registration.backends.one_step.urls'), name='register'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('login', view.LoginView.as_view(template_name='registration/login.html'), name ='login'),
+    path('logout/', logout, name='logout'),
 
 
 ] +static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)

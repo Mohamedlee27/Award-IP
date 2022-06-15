@@ -15,4 +15,4 @@ def home(request):
         'post_link'     :  post_link,
 
     }
-    return render(request, 'base.html', context)
+    return render(request, 'home.html', context)
