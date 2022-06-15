@@ -3,22 +3,20 @@
 
 {% block content %}
 
-<section class="section-conten padding-y bg">
+<section class="section-conten padding-y bg" style="margin-top: 10%;">
 
 <div class="container mt-3">
 	<div class="row">
-	<main class="col-md-9">
+	<main class="col-md-6">
 		<article class="card">
 		<header class="card-header">
 			<strong class="d-inline-block mr-3">Customize Your Profile</strong>
 
 		</header>
 		<div class="card-body">
-			<div class="text-right">
-				<img src="{{userprofile.profile_picture.url}}" alt="Profile Picture" width="100" style="border-radius:50px;">
-			</div>
+
 			<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-8">
 				<form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="form-row">
@@ -71,7 +69,21 @@
 		</div> 
 
 		</article> 
+
 	</main>
+	<div class="col-md-4">
+		<img src="{{userprofile.profile_picture.url}}" alt="Profile Picture" width="300" style="border-radius:50px;">
+		<h2 style="color: black;">Username: {{user.username}}</h2>
+		<h2 style="color: black;">First Name: {{user.first_name}}</h2>
+		<h2 style="color: black;">Last Name: {{user.last_name}}</h2>
+		<h2 style="color: black;">Phone Number: {{user.phone_number}}</h2>
+		<h2 style="color: black;">City: {{userprofile.city}}</h2>
+		<h2 style="color: black;">Country: {{userprofile.country}}</h2>
+		<h2 style="color: black;">State: {{userprofile.state}}</h2>
+		<h2 style="color: black;">Adress 1: {{userprofile.address_line_1}}</h2>
+		<h2 style="color: black;">Adress 2: {{userprofile.address_line_2}}</h2>
+		
+	</div>
 </div> 
 </div>
 

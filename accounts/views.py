@@ -83,15 +83,11 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-
-
-
-
-
 @login_required(login_url='login')
 def edit_profile(request):
     userprofile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
+        profile=UserProfile.objects.get_or_create(user=request.user)
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
         if user_form.is_valid() and profile_form.is_valid():
