@@ -25,7 +25,9 @@ class Post(models.Model):
             avg = float(reviews['average'])
         return avg
 
-
+    @classmethod
+    def search_post(cls, title):
+       return cls.objects.filter(title__icontains=title).all()
 
 class ReviewRating(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

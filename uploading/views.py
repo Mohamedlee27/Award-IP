@@ -53,3 +53,17 @@ def singleview(request):
 
     }
     return render(request, 'single_view.html', context)
+
+def search_post(request):
+    if 'search' in request.GET and request.GET['search']:
+        name = request.GET.get("search")
+        results = Post.search_post(name)
+        message = f'name'
+        loops = {
+            'results': results,
+            'message': message
+        }
+        return render(request, 'search_results.html', loops)
+    else:
+        message = "You haven't searched for any User"
+    return render(request, 'search_results.html', {'message': message})

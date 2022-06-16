@@ -29,7 +29,7 @@ urlpatterns = [
     path('api/',include('rest_api.urls')),
     path('accounts/', include('django_registration.backends.one_step.urls'), name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('login', view.LoginView.as_view(template_name='registration/login.html'), name ='login'),
+    path('accounts/login', view.LoginView.as_view(template_name='registration/login.html'), name ='login'),
     path('logout/', logout, name='logout'),
 
 
